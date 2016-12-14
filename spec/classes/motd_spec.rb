@@ -121,6 +121,20 @@ describe 'motd', type: :class do
         domain: 'testdomain'
       }
     end
+    context 'When caption is specified' do
+      let(:params) do
+        {
+          legal_notice_caption: 'Caption'
+        }
+      end
+      it do
+        should contain_Registry_value('HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticecaption').with(
+          ensure: 'present',
+          type: 'string',
+          data: 'Caption'
+        )
+      end
+    end
     context 'When content is specified' do
       let(:params) do
         {

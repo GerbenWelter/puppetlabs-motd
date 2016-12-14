@@ -5,6 +5,7 @@
 # @param dynamic_motd [Bool] Enable or disable dynamic motd on Debian systems
 # @param template [String] Allows for custom template location
 # @param content [String] String to be used for motd, priority given to template
+# @param legal_notice_caption [String] String to be used for legalnoticecaption registry key
 #
 # @example
 #  include motd
@@ -13,6 +14,7 @@ class motd (
   $dynamic_motd = true,
   $template = undef,
   $content = undef,
+  $legal_notice_caption = 'Message of the day',
 ) {
 
   if $template {
@@ -51,7 +53,7 @@ class motd (
     registry_value { 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticecaption':
       ensure => present,
       type   => string,
-      data   => 'Message of the day',
+      data   => $legal_notice_caption,
     }
     registry_value { 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticetext':
       ensure => present,

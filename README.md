@@ -66,6 +66,10 @@ Specifies a static string as the motd content. Valid options: A string, such as 
 
 Enables or disables dynamic motd on Debian systems. Valid options:  true or false. Default: true.
 
+##### `legal_notice_caption`
+
+Sets the legal notice caption on Windows systems. A string, such as "Legal Disclaimer". Default: 'Message of the day'.
+
 ## Limitations
 
 This module has been tested on the following platforms:
